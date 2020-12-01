@@ -3,6 +3,11 @@ const inquirer= require("inquirer");
 const questions = [
     {
         Type:"input",
+        name: "name",
+        message: "What is your name?"
+    },
+    {
+        Type:"input",
         name: "username",
         message: "What is your GitHub username?"
     },
@@ -18,22 +23,20 @@ const questions = [
     },
     {
         Type:"input",
+        name: "Installation",
+        message: "Are there any files or programs that need to be installed for this project?"
+    },
+    {
+        Type:"input",
         name: "discription",
         message:"Please write a short description of your project"
     },
-
     {
-     Type:"checkbox",
-  message:"What kind of license should your project have?",
-     name:"license",
-            choices: 
-            [
-                "MIT License",
-                "Apache License",
-                "GPLLicense",
-                "None"
-            ]
-    },
+        type: "list",
+        message: "What kind of license should your project have?(Please choose one of below options !)",
+        choices: ["MIT License","Apache License", "GPLLicense", "None"],
+        name: "license",
+      },
 
     {
         Type:"input",
@@ -56,70 +59,24 @@ const questions = [
         message:"What does the user need to know about contributing to the repo?"
     },
 ]
-console.clear();
-inquirer.prompt(questions).then(function(answer){
-    fs.appendFileSync("./README.md", ("## Project unsername :  " + answer.username +"\n",
-    "## Email : " + answer.email +"\n",
-    "## The project name :  " + answer.project +"\n", function(err){
-        if (err) { console.log(err);
-            
-        }
-    }))
-});
 
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## Email : " + response.email +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## The project name :  " + response.project +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## Discription : " + response.discription +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## The license for this project :  " + response.license +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## Dependencies for this project :  " + response.dependencies +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## Test :  " + response.test +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## The name of repository :  " + response.repo +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
-// inquirer.prompt(questions).then(response=>{
-//     fs.appendFileSync(__dir/"README.md", ("## About contributing to the repo " + response.contribution +"\n", function(err){
-//         if (err) { console.log(err);
-            
-//         }
-//     }))
-// })
+inquirer.prompt(questions).then(function(answer) {
+    fs.appendFileSync("README.md", `## MY COOL PROJECT;## Created by :  \n  ${answer.name} \n
+    ## Project name: \n ${answer.project} \n
+    ## GitHub project unsername : \n ${answer.username} \n
+    ## Table of contentst:\n
+    *[Installation](* Installation)\n
+    *[Usage](* Usage)\n
+    *[License](* What kind of license have been used for this project)\n
+    *[Contribution](* Usage)\n
+    *[Tests](* What kind of Test needs to be done for this project)\n
+    *[Questions](* project Questions)\n \n
+    ## Installation:  \n ${answer.Installation}\n
+    ## Usage: \n ${answer.discription} \n
+    ## License: \n ${answer.license} \n
+    ## Contribution: \n ${answer.contribution} \n
+    ## About: \n ${answer.repo}  \n`, function(err){
+        if (err) {console.log("Something went wrong!!!");   
+        }
+    })
+});
