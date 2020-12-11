@@ -61,22 +61,8 @@ const questions = [
 ]
 
 inquirer.prompt(questions).then(function(answer) {
-    fs.appendFileSync("README.md", `## MY COOL PROJECT;## Created by :  \n  ${answer.name} \n
-    ## Project name: \n ${answer.project} \n
-    ## GitHub project unsername : \n ${answer.username} \n
-    ## Table of contentst:\n
-    *[Installation](* Installation)\n
-    *[Usage](* Usage)\n
-    *[License](* What kind of license have been used for this project)\n
-    *[Contribution](* Usage)\n
-    *[Tests](* What kind of Test needs to be done for this project)\n
-    *[Questions](* project Questions)\n \n
-    ## Installation:  \n ${answer.Installation}\n
-    ## Usage: \n ${answer.discription} \n
-    ## License: \n ${answer.license} \n
-    ## Contribution: \n ${answer.contribution} \n
-    ## About: \n ${answer.repo}  \n`, function(err){
+    fs.appendFileSync("README.md", `## MY COOL PROJECT;## Created by :  \n  ${answer.name} \n## Project name: \n${answer.project}\n## GitHub project unsername : \n ${answer.username} \n## Table of contentst:\n*[Installation](#Installation)\n*[Usage](#Usage)\n*[License](#What kind of license have been used for this project)\n*[Contribution](#Usage)\n*[Tests](#What kind of Test needs to be done for this project)\n*[Questions](#project Questions)\n \n## Installation:  \n ${answer.Installation}\n## Usage: \n ${answer.discription} \n## License: \n ${answer.license} \n## Contribution: \n ${answer.contribution} \n## About: \n ${answer.repo}  \n`, function(err){
         if (err) {console.log("Something went wrong!!!");   
-        }
+        }else{"README.md file successfully has been created for you, please check README.md file..."};
     })
 });
