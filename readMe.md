@@ -26,3 +26,5 @@ using package manager inquirer helps to prompt user and provide the user input t
 Once complete , a "readme" file will be generated with the user's information and responses.
 Technologies
 This application uses the following: Node.js, Fs, and Inquirer.
+#Credits;
+ Thanks to John Young my class instructor and Ben Vaagen my TA. special Thanks to Abdul Aziz my TA and Amanda Crawford My Tutor for helping me to understand the class and homework contents.
